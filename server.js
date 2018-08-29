@@ -13,14 +13,14 @@ const oidc = new Provider(process.env.ROUTE_URL, {
   },
   features: {
     claimsParameter: true,
-    conformIdTokenClaims: true,
+    conformIdTokenClaims: false,
     discovery: true,
-    encryption: true,
-    introspection: true,
-    registration: true,
-    request: true,
-    revocation: true,
-    sessionManagement: true,
+    encryption: false,
+    introspection: false,
+    registration: false,
+    request: false,
+    revocation: false,
+    sessionManagement: false,
   },
 });
 
@@ -31,8 +31,8 @@ oidc.initialize({
   clients: [{
     token_endpoint_auth_method: 'client_secret_jwt', 
     client_id: 'che',
-    grant_types: ['authorization_code'],
-    response_types: ['code'],
+    grant_types: ['authorization_code', 'implicit'],
+    response_types: ['code', 'token', 'id_token'],
     redirect_uris: [process.env.REDIRECT_URIS] 
   }],
 }).then(() => {
