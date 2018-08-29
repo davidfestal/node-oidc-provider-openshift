@@ -31,8 +31,8 @@ oidc.initialize({
   clients: [{
     token_endpoint_auth_method: 'client_secret_jwt', 
     client_id: 'che',
-    grant_types: ['authorization_code', 'implicit', 'refresh_token'],
-    response_types: ['code', 'token', 'id_token'],
+    grant_types: ['authorization_code'],
+    response_types: ['code'],
     redirect_uris: [process.env.REDIRECT_URIS] 
   }],
 }).then(() => {
