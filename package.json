@@ -1,7 +1,7 @@
 {
   "name": "node-oidc-provider-openshift",
   "version": "4.1.0",
-  "main": "index.js",
+  "main": "server.js",
   "engines": {
     "node": ">=8.0.0"
   },
