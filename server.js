@@ -28,7 +28,13 @@ const keystore = require('./keystore.json');
 
 oidc.initialize({
   keystore,
-  clients: [{ client_id: 'foo', token_endpoint_auth_method: 'client_secret_jwt', redirect_uris: [process.env.REDIRECT_URIS] }],
+  clients: [{
+    token_endpoint_auth_method: 'client_secret_jwt', 
+    client_id: 'che',
+    grant_types: ['authorization_code', 'implicit', 'refresh_token'],
+    response_types: ['code', 'token', 'id_token'],
+    redirect_uris: [process.env.REDIRECT_URIS] 
+  }],
 }).then(() => {
   oidc.listen(process.env.OIDC_PROVIDER_SERVICE_PORT);
 });
