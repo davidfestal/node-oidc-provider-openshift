@@ -37,4 +37,6 @@ oidc.initialize({
   }],
 }).then(() => {
   oidc.listen(process.env.OIDC_PROVIDER_SERVICE_PORT);
+},(error) => {
+  console.error(error);
 });
