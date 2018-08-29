@@ -1,11 +1,11 @@
 {
-  "name": "node-oidc-provider-examples",
+  "name": "node-oidc-provider-openshift",
   "version": "4.1.0",
   "main": "index.js",
   "engines": {
     "node": ">=8.0.0"
   },
-  "license": "MIT",
+  "license": "Apache 2.0",
   "dependencies": {
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
