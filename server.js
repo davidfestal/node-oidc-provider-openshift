@@ -29,7 +29,7 @@ const keystore = require('./keystore.json');
 oidc.initialize({
   keystore,
   clients: [{
-    token_endpoint_auth_method: 'client_secret_jwt', 
+    token_endpoint_auth_method: 'none', 
     client_id: 'che',
     grant_types: ['authorization_code', 'implicit'],
     response_types: ['code', 'token', 'id_token'],
