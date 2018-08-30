@@ -1,6 +1,7 @@
 
 const assert = require('assert');
 const Provider = require('oidc-provider');
+const getCors = require('@koa/cors');
 
 assert(process.env.ROUTE_URL, 'process.env.ROUTE_URL missing');
 assert(process.env.OIDC_PROVIDER_SERVICE_PORT, 'process.env.OIDC_PROVIDER_SERVICE_PORT missing');
