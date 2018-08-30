@@ -43,6 +43,8 @@ oidc.initialize({
   oidc.use(async (ctx, next) => {
   if (ctx.request.path == oidc.pathFor('token')) {
     await tokenCors(ctx, next);
+  } else {
+    await next();
   }
 });
   oidc.listen(process.env.OIDC_PROVIDER_SERVICE_PORT);
