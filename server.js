@@ -36,6 +36,14 @@ oidc.initialize({
     redirect_uris: [process.env.REDIRECT_URIS] 
   }],
 }).then(() => {
+  const tokenCors = getCors({
+    allowedMethods: 'GET,POST', exposeHeaders: 'WWW-Authenticate', allowHeaders: 'Authorization',
+  });  
+  oidc.use(async (ctx, next) => {
+  if (ctx.request.path == oidc.pathFor('token')) {
+    await tokenCors(ctx, next);
+  }
+});
   oidc.listen(process.env.OIDC_PROVIDER_SERVICE_PORT);
 },(error) => {
   console.error(error);
