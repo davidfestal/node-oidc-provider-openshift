@@ -38,7 +38,7 @@ oidc.initialize({
   }],
 }).then(() => {
   const tokenCors = getCors({
-    allowedMethods: 'GET,POST', exposeHeaders: 'WWW-Authenticate', allowHeaders: 'Authorization',
+    allowedMethods: 'GET,POST', exposeHeaders: 'WWW-Authenticate', allowHeaders: 'Authorization', credentials: true
   });  
   oidc.use(async (ctx, next) => {
   if (ctx.request.path == oidc.pathFor('token')) {
