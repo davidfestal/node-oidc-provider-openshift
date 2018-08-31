@@ -25,6 +25,18 @@ const oidc = new Provider(process.env.ROUTE_URL, {
     revocation: false,
     sessionManagement: false,
   },
+  async findById(ctx, id) {
+    return {
+      accountId: id,
+      async claims(use, scope) { return { 
+        sub: id,
+        email: 'developer@developer',
+        given_name: 'first name',
+        family_name: 'last name',
+        preferred_username: 'developer'
+      }; },
+    };
+  }
 });
 
 const keystore = require('./keystore.json');
