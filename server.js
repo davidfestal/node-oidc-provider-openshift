@@ -13,6 +13,7 @@ const oidc = new Provider(process.env.ROUTE_URL, {
     AccessToken: 'jwt',
   },
   features: {
+    alwaysIssueRefresh: true,
     claimsParameter: true,
     conformIdTokenClaims: false,
     discovery: true,
