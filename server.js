@@ -11,6 +11,7 @@ const oidc = new Provider(process.env.ROUTE_URL, {
   formats: {
     default: 'opaque',
     AccessToken: 'jwt',
+    RefreshToken: 'jwt'
   },
   features: {
     alwaysIssueRefresh: true,
