@@ -65,7 +65,7 @@ oidc.initialize({
   oidc.use(async (ctx, next) => {
   if (ctx.request.path == oidc.pathFor('token')) {
     await tokenCors(ctx, next);
-    console.log('ctx.body: ', ctx.body);
+    console.log('ctx: ', ctx);
   } else {
     await next();
   }
