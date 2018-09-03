@@ -14,7 +14,6 @@ const oidc = new Provider(process.env.ROUTE_URL, {
     RefreshToken: 'jwt'
   },
   features: {
-    alwaysIssueRefresh: true,
     claimsParameter: true,
     conformIdTokenClaims: false,
     discovery: true,
@@ -65,6 +64,7 @@ oidc.initialize({
   oidc.use(async (ctx, next) => {
   if (ctx.request.path == oidc.pathFor('token')) {
     await tokenCors(ctx, next);
+    console.log('ctx.body.accessToken: ', ctx.body.accessToken);
   } else {
     await next();
   }
