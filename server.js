@@ -25,7 +25,7 @@ const oidc = new Provider(process.env.ROUTE_URL, {
     revocation: false,
     sessionManagement: false,
   },
-  scopes: [ 'openid email', 'offline_access' ],
+  scopes: [ 'openid','offline_access' ],
   claims: {
     openid: ['preferred_username', 'email'],
     email: ['email', 'email_verified'],
