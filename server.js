@@ -15,7 +15,7 @@ const oidc = new Provider(process.env.ROUTE_URL, {
   },
   features: {
     alwaysIssueRefresh: true,
-    claimsParameter: true,
+    claimsParameter: false,
     conformIdTokenClaims: false,
     discovery: true,
     encryption: false,
@@ -27,7 +27,7 @@ const oidc = new Provider(process.env.ROUTE_URL, {
   },
   async findById(ctx, id) {
     return {
-      accountId: id,
+      accountId: 'developer',
       async claims(use, scope) { return { 
         sub: 'developer',
         email: 'developer@developer',
