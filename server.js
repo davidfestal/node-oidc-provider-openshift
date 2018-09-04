@@ -23,21 +23,13 @@ const oidc = new Provider(process.env.ROUTE_URL, {
     registration: false,
     request: false,
     revocation: false,
-    sessionManagement: false,
-  },
-  scopes: [ 'openid','offline_access' ],
-  claims: {
-    openid: ['preferred_username', 'email'],
-    email: ['email', 'email_verified'],
-    phone: ['phone_number', 'phone_number_verified'],
-    profile: ['birthdate', 'family_name', 'gender', 'given_name', 'locale', 'middle_name', 'name',
-      'nickname', 'picture', 'preferred_username', 'profile', 'updated_at', 'website', 'zoneinfo'],
+    sessionManagement: true,
   },
   async findById(ctx, id) {
     return {
       accountId: id,
       async claims(use, scope) { return { 
-        sub: id,
+        sub: 'developer',
         email: 'developer@developer',
         given_name: 'first name',
         family_name: 'last name',
