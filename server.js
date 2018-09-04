@@ -15,14 +15,6 @@ const oidc = new Provider(process.env.ROUTE_URL, {
   },
   features: {
     alwaysIssueRefresh: true,
-    claimsParameter: false,
-    conformIdTokenClaims: false,
-    discovery: true,
-    encryption: false,
-    introspection: false,
-    registration: false,
-    request: false,
-    revocation: false,
     sessionManagement: true,
   },
   claims: {
@@ -38,8 +30,6 @@ const oidc = new Provider(process.env.ROUTE_URL, {
       async claims(use, scope) { return { 
         sub: 'developer',
         email: 'developer@developer',
-        given_name: 'first name',
-        family_name: 'last name',
         preferred_username: 'developer'
       }; },
     };
@@ -64,7 +54,6 @@ oidc.initialize({
   oidc.use(async (ctx, next) => {
   if (ctx.request.path == oidc.pathFor('token')) {
     await tokenCors(ctx, next);
-    console.log('ctx: ', ctx);
   } else {
     await next();
   }
