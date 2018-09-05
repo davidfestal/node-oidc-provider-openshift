@@ -5,7 +5,8 @@ const getCors = require('@koa/cors');
 
 assert(process.env.ROUTE_URL, 'process.env.ROUTE_URL missing');
 assert(process.env.OIDC_PROVIDER_SERVICE_PORT, 'process.env.OIDC_PROVIDER_SERVICE_PORT missing');
-assert(process.env.REDIRECT_URIS, 'process.env.REDIRECT_URIS missing');
+assert(process.env.REDIRECT_URI_DASHBOARD, 'process.env.REDIRECT_URI_DASHBOARD missing');
+assert(process.env.REDIRECT_URI_IDE, 'process.env.REDIRECT_URI_IDE missing');
 
 const oidc = new Provider(process.env.ROUTE_URL, {
   formats: {
@@ -45,7 +46,7 @@ oidc.initialize({
     client_id: 'che',
     grant_types: ['authorization_code', 'refresh_token'],
     response_types: ['code'],
-    redirect_uris: [process.env.REDIRECT_URIS] 
+    redirect_uris: [process.env.REDIRECT_URI_DASHBOARD, process.env.REDIRECT_URI_IDE] 
   }],
 }).then(() => {
   const tokenCors = getCors({
