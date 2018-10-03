@@ -27,13 +27,13 @@ const oidc = new Provider(process.env.ROUTE_URL, {
   },
   async findById(ctx, id) {
     return {
-      accountId: 'developer',
+      accountId: id,
       async claims(use, scope) {
         return { 
-          sub: 'developer',
-          email: 'developer@developer',
-          preferred_username: 'developer',
-          given_name: 'developer'
+          sub: id,
+          email: id + '@minishift',
+          preferred_username: id,
+          given_name: id
         };
       },
     };
